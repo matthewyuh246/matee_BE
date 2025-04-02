@@ -12,7 +12,7 @@ type User struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
-type UserResponse struct {
+type GithubUser struct {
 	ID        int    `json:"id"`
 	Name      string `json:"name"`
 	Email     string `json:"email"`
