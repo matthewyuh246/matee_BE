@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/matthewyuh246/Matee/internal/domain"
+	"github.com/matthewyuh246/Matee/internal/repository"
 )
 
 type IUserUsecase interface {
