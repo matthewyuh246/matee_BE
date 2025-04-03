@@ -11,11 +11,15 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/matthewyuh246/Matee/internal/domain"
+	"github.com/matthewyuh246/Matee/internal/usecase"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/github"
 )
 
 type IUserController interface {
+	GitHubLogin(c echo.Context) error
+	GitHubCallback(c echo.Context) error
+	Logout(c echo.Context) error
 }
 
 type userController struct {
@@ -111,7 +115,7 @@ func (uc *userController) GitHubCallback(c echo.Context) error {
 		AvatarURL: guser.AvatarURL,
 	}
 
-	user, err := uc.userUsecase.FindOrCreateUserByGitHub(newUser)
+	user, err := uc.uu.FindOrCreateUserByGitHub(newUser)
 	if err != nil {
 		return c.String(http.StatusInternalServerError, "Failed to find or create user")
 	}
