@@ -15,7 +15,7 @@ func NewDB() *gorm.DB {
 	var flag_env = flag.String("GO_ENV", "", "開発環境フラグ")
 	flag.Parse()
 	if *flag_env == "dev" {
-		err := godotenv.Load("../../.env")
+		err := godotenv.Load("./.env")
 		if err != nil {
 			log.Fatalln(err)
 		}
